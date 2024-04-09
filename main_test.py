@@ -143,7 +143,7 @@ if __name__ == "__main__":
         is_lack_margin = True
         
         # data_fn = "data_preprocess/IF_prophetic.csv"
-        data_fn = "data_preprocess/IC_prophetic.csv"
+        data_fn = "IC_prophetic.csv"
         test_env = environment(data_fn=data_fn,  data_mode=data_mode, duration=duration, is_demo=is_demo, 
                                 is_intraday=True, is_lack_margin=is_lack_margin, args=args)
         rdpg = RDPG(demo_env, test_env, args)

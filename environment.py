@@ -84,7 +84,7 @@ def episode(df, stateWinlen, date, data_mode, duration, ep_idx):
                 
         elif data_mode=='time_order':
             df_daily=pd.read_csv("data_preprocess/raw_data/IF_2015to2018_day.csv",parse_dates=True,index_col=0)
-            df_daily=df_daily['2018-05-09':'2019-05-08']
+            df_daily=df_daily['2023-01-01':'2023-12-31']
             day_lst=df_daily.index
             time_idx=day_lst[ep_idx].date()
             print('time_idx=', time_idx)
@@ -137,9 +137,9 @@ class environment():
         self.Data=preProcessData(data_fn)  
         
         if self.duration == 'train':
-            self.time_range = ('2016-01-01','2018-05-08')
+            self.time_range = ('2022-01-01','2022-12-31')
         elif self.duration == 'test':
-            self.time_range = ('2018-05-08','2019-05-08')
+            self.time_range = ('2023-01-01','2023-12-31')
         
         ##### market observation setting #####
         self.temp_observation = ['normOpen','normClose','normHigh','normLow',

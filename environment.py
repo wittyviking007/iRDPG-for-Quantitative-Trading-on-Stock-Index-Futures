@@ -328,8 +328,8 @@ class environment():
             print('trading_action is zero, which is wrong.')
             raise AssertionError('trading_action is zero')
             
-        pt0 = self.mktOb['close'][self.stepIdx + (self.stateWinlen-1) - 1] #p_{t-1} , 因為做當沖所以用Open
-        pt1 = self.mktOb['close'][self.stepIdx + (self.stateWinlen-1)] # p_{t} , 注意9:31分進場取的open其實是9:30分的open
+        pt0 = self.mktOb['close'][min(self.mktOb.shape[0]-1,self.stepIdx + (self.stateWinlen-1) - 1)] #p_{t-1} , 因為做當沖所以用Open
+        pt1 = self.mktOb['close'][min(self.mktOb.shape[0]-1,self.stepIdx + (self.stateWinlen-1))] # p_{t} , 注意9:31分進場取的open其實是9:30分的open
         # print(f'pt0={pt0}, pt1={pt1}')
         
         '''### 依「交易訊號&持單狀態」執行交易rules ###'''

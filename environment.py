@@ -294,7 +294,8 @@ class environment():
         
         '''##### reward Calculation #####'''
         step_init_margin = self.state0['margin'].values#.reset_index()
-        self.step_init_margin = step_init_margin[-1]
+        print("step init margin: ",step_init_margin)
+        self.step_init_margin = step_init_margin[0]
         # reward = self.DSR_reward()
         reward = self.DSR_reward2()
         # reward = reward + 0.5*np.clip(self.profit,-self.R_max, self.R_max)

@@ -382,8 +382,9 @@ class environment():
     
     def trade_at_terminate(self, action):
         '''注意：這邊的price應該要用raw data的值，而不是normalize過的'''
-        pt0 = self.mktOb['close'][self.stepIdx + (self.stateWinlen-1) -1] #p_{t-1} , 因為做當沖所以用Open
-        pt1 = self.mktOb['close'][self.stepIdx + (self.stateWinlen-1)] #因照4/23大家決議：在收盤時一定平倉，不會持倉到隔日。
+        # min(self.mktOb.shape[0]-1,self.stepIdx + (self.stateWinlen -1))
+        pt0 = self.mktOb['close'][min(self.mktOb.shape[0]-1,self.stepIdx + (self.stateWinlen-1) -1)] #p_{t-1} , 因為做當沖所以用Open
+        pt1 = self.mktOb['close'][min(self.mktOb.shape[0]-1,self.stepIdx + (self.stateWinlen-1))] #因照4/23大家決議：在收盤時一定平倉，不會持倉到隔日。
         
         ### 因為是強制平倉，所以不用管交易訊號action
         # print('before_terminate_position=',self.position)

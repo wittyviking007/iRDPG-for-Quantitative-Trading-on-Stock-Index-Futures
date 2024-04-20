@@ -239,7 +239,7 @@ class environment():
         ##### Demonstration Buffer ##### 
         ###(注意：進行此模式時，就算有action吃進來，在以下if也會被改成是demo的action)
         if self.is_demo == True:
-            action = self.mktOb['cumsum'][self.stepIdx + (self.stateWinlen -1)]
+            action = self.mktOb['cumsum'][min(self.mktOb.shape[0]-1,self.stepIdx + (self.stateWinlen -1))]
             if action == 0:
                 if self.stepIdx != self.finalStep:
                     action = self.ep_prev_action
@@ -253,7 +253,7 @@ class environment():
         
         '''##### current state setting #####'''
         ### slice current market observations from the same episode ###
-        self.state1 = self.mktOb[self.temp_observation][self.stepIdx : (self.stepIdx +self.stateWinlen)]
+        self.state1 = self.mktOb[self.temp_observation][self.stepIdx : min(self.mktOb.shape[0],(self.stepIdx +self.stateWinlen))]
         
         ### update new account observations ###
         ### slice last nine historical profits from privious_state 

@@ -273,8 +273,12 @@ class environment():
             state_margin1 = np.append(state_margin0, self.margin / self.principal)
         
         ### finally combine market observation and completed current_profits
+        # Assuming self.state1 is a DataFrame or a Series
+        # Adjusting the index to match the length of state_profit1
+        if len(self.state1) != len(state_profit1):
+            self.state1 = self.state1[:len(state_profit1)]
         self.state1['profit'] = state_profit1
-        self.state1['margin'] = state_margin1 
+        self.state1['margin'] = state_margin1
         self.state1['normMargin'] = state_margin1  #state的浮動margin對本金normalize
         
         

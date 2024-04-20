@@ -225,7 +225,7 @@ class environment():
         self.stepIdx+=1
         
         if self.is_BClone == True or self.is_PER_replay:
-            action_bc = self.mktOb['phtAction'][self.stepIdx + (self.stateWinlen -1)]
+            action_bc = self.mktOb['phtAction'][min(self.mktOb.shape[0]-1,self.stepIdx + (self.stateWinlen -1))]
             if action_bc==0 and self.is_PER_replay:
                 action_bc=random.choice([1,-1]) #radnomly choose an action
             

@@ -185,7 +185,7 @@ class ReplayBuffer(object):
                 gamma_.append(gamma.clone())
                 flag_.append(flag)
         # stack along new axis
-            print("s_ : " ,len(s_)
+            print("s_ : " ,len(s_))
             stt.append(torch.stack(s_))
             att.append(torch.stack(a_))
             actt.append(torch.stack(ac_))

@@ -172,6 +172,7 @@ class ReplayBuffer(object):
         stt, att, actt, rtt, s2tt, gtt, ftt = [], [], [], [], [], [], []
         st, at, act, rt, s2t, gt, ft = [], [], [], [], [], [], []
         exps = self._storage[idxes]
+        print("experiences: ",exps)
         for exp in exps:
             s_, a_, ac_, r_, s2_, gamma_, flag_ = [], [], [], [], [], [], []
             for t in exp:

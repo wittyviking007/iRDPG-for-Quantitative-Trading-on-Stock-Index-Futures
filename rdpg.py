@@ -304,7 +304,6 @@ class RDPG(object):
         else:
             (state0s, actions, action_bcs, rewards, state1s, batch_gammas, batch_flagss), \
                                            weights, idxes = self.memory.sample(self.batch_size)
-            print("idxes: ",idxes)
             t_len = len(state0s)
 
         actor_loss_total = 0  #actor loss

@@ -176,7 +176,10 @@ class ReplayBuffer(object):
             s_, a_, ac_, r_, s2_, gamma_, flag_ = [], [], [], [], [], [], []
             for t in exp:
                 s, a, ac, r, s2, gamma, flag = t
-                print("s: ",s.shape)
+
+                # change this accordingly when you change input tensor
+                s = s.view((15,14)) # hard coded values by me
+                
                 s_.append(s.clone())
                 a_.append(a.clone())
                 ac_.append(ac.clone())
@@ -185,7 +188,6 @@ class ReplayBuffer(object):
                 gamma_.append(gamma.clone())
                 flag_.append(flag)
         # stack along new axis
-            print("s_ : " ,len(s_))
             stt.append(torch.stack(s_))
             att.append(torch.stack(a_))
             actt.append(torch.stack(ac_))

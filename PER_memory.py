@@ -179,15 +179,16 @@ class ReplayBuffer(object):
 
                 # change this accordingly when you change input tensor
                 # Check if the original tensor has fewer rows than 15
-                if s.size(0) < 15:
+                if s.size(0) == 0:
                     # Calculate the number of rows to pad
                     rows_to_pad = 15 - s.size(0)
                     
                     # Create a tensor filled with zeros to pad the original tensor
-                    padding_tensor = torch.zeros((rows_to_pad, 14))
+                    padding_tensor = torch.zeros((15, 14))
                     
                     # Concatenate the original tensor with the padding tensor along the first dimension
                     s = torch.cat((s, padding_tensor), dim=0)
+                    print("s new shape: ",s.shape)
                 
                 s_.append(s.clone())
                 a_.append(a.clone())

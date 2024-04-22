@@ -55,11 +55,10 @@ class Agent(object):
         return action, self.epsilon
 
     def select_action(self, state, noise_enable=True, decay_epsilon=True):
+        action = 0
         if state.size(0) > 0:
             xh, _ = self.rnn(state)
             action = self.actor(xh)
-        else:
-            action = 0
         
         action = to_numpy(action.cpu()).squeeze(0)
         if noise_enable == True:

@@ -269,7 +269,7 @@ class RDPG(object):
                     break
             
             ##### Save models #####
-            if (episode-1) >= 150 or (episode-1) % 10 == 0 or ewma_reward > self.save_threshold:
+            if (episode-1) >= 150 or (episode-1) % 100 == 0 or ewma_reward > self.save_threshold:
                 self.agent.save_model(checkpoint_path, (episode-1), ewma_reward)
             
             ##### Plot Training Curves #####

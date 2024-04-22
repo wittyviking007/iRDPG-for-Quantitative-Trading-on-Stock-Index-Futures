@@ -88,7 +88,7 @@ class Evaluator(object):
         Sr = self.sharpe_ratio(day_ret, freq=self.test_episodes)
         Vol = self.volatility(day_ret)
         Mdd = self.max_drawdown(day_acc_ret)
-        performance_dic = {'Tr':Tr, 'Sr':Sr, 'Vol':Vol, 'Mdd':Mdd}
+        performance_dic = {'Tr(%)':Tr*100, 'Sr':Sr, 'Vol':Vol, 'Mdd(%)':Mdd*100}
         performance = pd.DataFrame(performance_dic,index=[0])
         performance.to_csv('results/PolicyPerf' +description +'.csv',  index=False)
         print('performance=', performance)
@@ -98,7 +98,7 @@ class Evaluator(object):
     
     def total_return(self, returns):
         '''Total return rate'''
-        return returns[-1]
+        return returns[-1] 
     
     def sharpe_ratio(self, returns, freq=243, rfr=0):
         """ Given a set of returns, calculates naive (rfr=0) sharpe ratio"""

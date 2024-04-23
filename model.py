@@ -42,6 +42,9 @@ class RNN(nn.Module):
             self.hx = Variable(self.hx.data).type(FLOAT).cuda()
         
     def forward(self, x, hidden_states=None):
+        if x.size(0) == 0:
+            return [], None
+        
         if self.rnn_mode == 'lstm':
             if hidden_states == None:  #agent與env互動select.action時走此流程，並且hidden_state會傳入下一step。
                 out, (hx, cx) = self.rnn(x, (self.hx, self.cx))
@@ -55,8 +58,6 @@ class RNN(nn.Module):
         
         elif self.rnn_mode == 'gru':
             if hidden_states == None:  #agent與env互動select.action時走此流程，並且hidden_state會傳入下一step。
-                if x.size(0) == 0:
-                    return [], None
                 out, hx = self.rnn(x, self.hx)
                 self.hx = hx
             else: # 在update policy時走此流程，並且每step都讓hidden_states歸0 (詳見rdpg.py的update_policy)

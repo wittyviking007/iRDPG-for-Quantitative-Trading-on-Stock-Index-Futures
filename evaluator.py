@@ -40,6 +40,7 @@ class Evaluator(object):
                 
                 action, _ = agent_test.select_action(observe_cuda, noise_enable=False, decay_epsilon=False)
                 act = np.argmax(action)
+                print("action: ",act)
 
                 _, observation, reward, done, infos = env.step(act)
                 observation = deepcopy(observation.values)

@@ -170,7 +170,7 @@ class RDPG(object):
                             epsilon = 0.50
                         else:
                             action, epsilon = self.agent.select_action(state0_cuda)
-                            print("action: ",action)
+                            # print("action: ",action)
                         action_bc, next_state, reward, done, infos = self.env.step(np.argmax(action))
                 ######################################################################
                 

@@ -165,8 +165,11 @@ class RDPG(object):
                             
                         state0_cuda = to_tensor(np.array([state0])).cuda()
                         # state0_cuda = to_tensor(state0).cuda()
-                        print("state0 cuda: ",state0_cuda)
-                        action, epsilon = self.agent.select_action(state0_cuda)
+                        if state0_cude.size(0) == 0:
+                            action=0
+                            epsilon = 0.50
+                        else:
+                            action, epsilon = self.agent.select_action(state0_cuda)
                         action_bc, next_state, reward, done, infos = self.env.step(np.argmax(action))
                 ######################################################################
                 

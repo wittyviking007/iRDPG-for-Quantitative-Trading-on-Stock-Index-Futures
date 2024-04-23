@@ -165,7 +165,7 @@ class RDPG(object):
                             
                         state0_cuda = to_tensor(np.array([state0])).cuda()
                         # state0_cuda = to_tensor(state0).cuda()
-                        if state0_cuda.size(0) == 0:
+                        if state0_cuda.numel() == 0:
                             action=0
                             epsilon = 0.50
                         else:

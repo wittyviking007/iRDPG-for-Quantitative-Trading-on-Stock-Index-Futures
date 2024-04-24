@@ -137,25 +137,25 @@ if __name__ == "__main__":
     elif args.mode == 'test':
         torch.cuda.empty_cache()
         print('##### Run Testing #####')
-        ### test_env setting ###
-        # is_demo = True
-        is_demo = False  
-        # data_mode = 'time_order'  
-        data_mode = 'random'
-        duration = 'test'  # testing period from 2018/5/9 to 2019/5/8
-        is_lack_margin = True
+        # ### test_env setting ###
+        # # is_demo = True
+        # is_demo = False  
+        # # data_mode = 'time_order'  
+        # data_mode = 'random'
+        # duration = 'test'  # testing period from 2018/5/9 to 2019/5/8
+        # is_lack_margin = True
         
-        # data_fn = "data_preprocess/IF_prophetic.csv"
-        data_fn = "IC_prophetic.csv"
-        test_env = environment(data_fn=data_fn,  data_mode=data_mode, duration=duration, is_demo=is_demo, 
-                                is_intraday=True, is_lack_margin=is_lack_margin, args=args)
-        rdpg = RDPG(demo_env, test_env, args)
+        # # data_fn = "data_preprocess/IF_prophetic.csv"
+        # data_fn = "IC_prophetic.csv"
+        # test_env = environment(data_fn=data_fn,  data_mode=data_mode, duration=duration, is_demo=is_demo, 
+        #                         is_intraday=True, is_lack_margin=is_lack_margin, args=args)
+        # rdpg = RDPG(demo_env, test_env, args)
         
 
-        # description = 'iRDPG_agent' 
-        description = '_BC_gru_ep2000_rd-14_629'
-        model_fn = description +'.pkl'
-        rdpg.test(args.checkpoint, model_fn, description, lackM=is_lack_margin, debug=args.debug)
+        # # description = 'iRDPG_agent' 
+        # description = '_BC_gru_ep2000_rd-14_629'
+        # model_fn = description +'.pkl'
+        # rdpg.test(args.checkpoint, model_fn, description, lackM=is_lack_margin, debug=args.debug)
 
         df_size = 300
         trades = np.random.choice([0,1,-1], size=df_size)

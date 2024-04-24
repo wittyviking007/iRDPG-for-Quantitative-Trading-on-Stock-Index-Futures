@@ -138,8 +138,8 @@ if __name__ == "__main__":
         ### test_env setting ###
         # is_demo = True
         is_demo = False  
-        # data_mode = 'time_order'  
-        data_mode = 'random'
+        data_mode = 'time_order'  
+        # data_mode = 'random'
         duration = 'test'  # testing period from 2018/5/9 to 2019/5/8
         is_lack_margin = True
         

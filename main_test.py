@@ -151,7 +151,7 @@ if __name__ == "__main__":
         
 
         # description = 'iRDPG_agent' 
-        description = '_BC_gru_ep100_rd-45_629'
+        description = '_BC_gru_ep400_rd-32_629'
         model_fn = description +'.pkl'
         rdpg.test(args.checkpoint, model_fn, description, lackM=is_lack_margin, debug=args.debug)
                 

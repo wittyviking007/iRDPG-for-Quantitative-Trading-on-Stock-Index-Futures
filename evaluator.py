@@ -1,5 +1,6 @@
 import numpy as np
 import pandas as pd
+import random
 import matplotlib.pyplot as plt
 from copy import deepcopy
 from util import *
@@ -39,7 +40,8 @@ class Evaluator(object):
                 # agent_test.reset_rnn_hidden(done=True) 
                 
                 action, _ = agent_test.select_action(observe_cuda, noise_enable=False, decay_epsilon=False)
-                act = np.argmax(action)
+                act = random.randint(0, 2)
+                # act = np.argmax(action)
                 # print("action: ",act)
 
                 _, observation, reward, done, infos = env.step(act)

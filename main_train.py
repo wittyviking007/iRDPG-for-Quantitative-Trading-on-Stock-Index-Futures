@@ -17,8 +17,8 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='PyTorch on Financial trading--iRDPG algorithm')
     
     ##### Model Setting #####
-    # parser.add_argument('--rnn_mode', default='lstm', type=str, help='RNN mode: LSTM/GRU')
-    parser.add_argument('--rnn_mode', default='gru', type=str, help='RNN mode: LSTM/GRU')
+    parser.add_argument('--rnn_mode', default='lstm', type=str, help='RNN mode: LSTM/GRU')
+    # parser.add_argument('--rnn_mode', default='gru', type=str, help='RNN mode: LSTM/GRU')
     parser.add_argument('--input_size', default=14, type=int, help='num of features for input state')
     parser.add_argument('--seq_len', default=15, type=int, help='sequence length of input state')
     parser.add_argument('--num_rnn_layer', default=2, type=int, help='num of rnn layer')

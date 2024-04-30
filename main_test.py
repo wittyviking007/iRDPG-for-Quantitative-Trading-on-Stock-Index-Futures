@@ -153,46 +153,10 @@ if __name__ == "__main__":
         
 
         # description = 'iRDPG_agent' 
-        description = '_BC_gru_ep2000_rd-14_629'
+        # description = '_BC_gru_ep2000_rd-14_629'
+        description = '_BC_lstm_ep1000_rd-17_629'
         model_fn = description +'.pkl'
         rdpg.test(args.checkpoint, model_fn, description, lackM=is_lack_margin, debug=args.debug)
-
-        df_size = 300
-        trades = np.random.choice([0,1,-1], size=df_size)
-        df=pd.read_csv("IC_prophetic.csv")
-        
-        # Load your stock price dataset
-        # Assuming 'dates', 'close_prices', and 'trades' are arrays containing date, close price, and buy/sell signals respectively
-        
-        df = df[pd.to_datetime(df['date.1']) >= pd.to_datetime('01-01-2023')][:df_size]
-        dates = df['date.1']
-        close_prices = df['close']
-        
-        # Plot the stock price
-        plt.figure(figsize=(20, 6))
-        plt.plot(dates, close_prices, label='Stock Price', color='blue')
-        
-        # Plot buy/sell signals
-        buy_indices = np.where(trades == -1)[0] + df.index[0]
-        sell_indices = np.where(trades == 1)[0] + df.index[0]
-        
-        plt.scatter(dates[buy_indices], close_prices[buy_indices], color='green', marker='^', label='Buy Signal')
-        plt.scatter(dates[sell_indices], close_prices[sell_indices], color='red', marker='v', label='Sell Signal')
-        
-        # Add labels and title
-        plt.xlabel('Dates')
-        plt.ylabel('Stock Prices')
-        plt.title('Stock Price with Buy/Sell Signals')
-        plt.legend()
-        
-        # Show the plot
-        plt.xticks(rotation=45)
-        # plt.tight_layout()
-        # Adjust x-axis ticks to be every 30 x values
-        plt.xticks(np.arange(0, df_size, step=30))
-        
-        plt.show()
-
             
         end_time = timer()
         minutes, seconds = (end_time - start_time)//60, (end_time - start_time)%60
